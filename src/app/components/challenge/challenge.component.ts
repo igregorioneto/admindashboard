@@ -6,11 +6,15 @@ import { FormArray, FormBuilder } from '@angular/forms';
   templateUrl: './challenge.component.html',
   styleUrls: ['./challenge.component.css']
 })
-export class ChallengeComponent {
+export class ChallengeComponent implements OnInit{
 
   sortNumbers!: Number[]
 
   constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.limparFormChallenge()
+  }
 
   formChallenge = this.fb.group({
     numbersArray: [''],
@@ -24,7 +28,7 @@ export class ChallengeComponent {
   }
 
   addValuesChallenge() {
-      let value = this.formChallenge.get('numbersArray')?.value - 1
+      let value = this.formChallenge.get('numbersArray')?.value
 
       if(value > 0) {
         for (let i = 0; i < value; i++) {
