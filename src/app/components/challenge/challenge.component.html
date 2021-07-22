@@ -1,0 +1,34 @@
+<h3>Problema do conjunto e seus elementos únicos</h3>
+
+<form [formGroup]="formChallenge">
+    <div>
+        <input type="number" 
+            formControlName="numbersArray"
+            placeholder="Digite a quantidade de números que serão digitados">
+    
+        <button (click)="addValuesChallenge()">Add</button>
+    </div>
+
+    <br><br>
+
+    <div *ngIf="valuesChallenge.controls.values">
+        <div
+            formArrayName="valuesChallenge" 
+            *ngFor="let value of valuesChallenge.controls; let i=index">
+
+                <input type="number" [formControlName]="i">
+                
+        </div>
+    </div>
+    <button (click)="valuesChallengeInputs()">Order numbers</button>
+
+    <br><br>
+
+    <div>
+        {{sortNumbers}}
+    </div>
+
+    <div>
+        <p>{{formChallenge.value | json}}</p>
+    </div>
+</form>
